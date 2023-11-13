@@ -1,6 +1,7 @@
 <?php
 $passlist = array('hogehoge' => 'hogepass', 'hoge2' => 'hoge2pass');
 
+
 if (!array_key_exists('user', $_POST)) {
     echoAuthPage("ログイン");
     exit;
@@ -41,24 +42,27 @@ function echoHelloPage($who)
 {
     include 'head.php';
 
+    // connectSQL('job_search', 'user');
+
     // Database connection and query
-    $hostname = '127.0.0.1';
-    $username = 'root';
-    $password = 'dbpass';
-    $dbname = 'task9';
-    $tablename = 'bbs';
+    // $hostname = '127.0.0.1';
+    // $username = 'root';
+    // $password = 'dbpass';
+    // $dbname = 'job_search';
+    global $tablename;
+    global $link;
 
-    $link = mysqli_connect($hostname, $username, $password);
+    connectSQL('job_search', 'user');
 
-    if (!$link) {
-        exit("Connect error!");
-    }
+    // if (!$link) {
+    //     exit("Connect error!");
+    // }
 
-    $result = mysqli_select_db($link, $dbname);
+    // $result = mysqli_select_db($link, $dbname);
 
-    if (!$result) {
-        exit("Use error on table ($dbname)!");
-    }
+    // if (!$result) {
+    //     exit("Use error on table ($dbname)!");
+    // }
 
     $selectQuery = "SELECT * FROM `$tablename`";
     $result = mysqli_query($link, $selectQuery);
@@ -86,5 +90,26 @@ function echoHelloPage($who)
     mysqli_close($link);
 
     include 'footer.php';
+}
+
+function connectSQL($database_name, $table_name)
+{
+    $hostname = '127.0.0.1';
+    $username = 'root';
+    $password = 'dbpass';
+    $dbname = $database_name;
+    $tablename = $table_name;
+
+    $link = mysqli_connect($hostname, $username, $password);
+
+    if (!$link) {
+        exit("Connect error!");
+    }
+
+    $result = mysqli_select_db($link, $dbname);
+
+    if (!$result) {
+        exit("Use error on table ($dbname)!");
+    }
 }
 ?>
