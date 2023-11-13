@@ -1,0 +1,17 @@
+# # temp.txtを無視する
+# temp.txt
+
+# # tempディレクトリを無視する
+# temp/
+
+# # tempディレクトリを無視する
+# /temp/
+
+# # .txtの全てを無視する
+# *.txt
+
+# # tempディレクトリを無視しない
+# !temp/
+
+# draw.ioのファイルを無視する
+*.drawio
