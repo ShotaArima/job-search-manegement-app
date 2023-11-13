@@ -85,9 +85,6 @@ function echoHelloPage($who)
     mysqli_free_result($result);
     mysqli_close($link);
 
-    echo <<<EOT
-    </body>
-    </html>
-EOT;
+    include 'footer.php';
 }
 ?>

@@ -49,6 +49,11 @@
                 z-index: 100;
             }
 
+            .footer
+            {
+                background-color: #f5f5f5;
+            }
+
             body {
                 margin-top: 100px;
             }
