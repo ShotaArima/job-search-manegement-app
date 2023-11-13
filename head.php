@@ -51,7 +51,8 @@
 
             .footer
             {
-                background-color: #f5f5f5;
+                background-color: #333;
+                color: #fff;
             }
 
             body {
