@@ -1,4 +1,8 @@
 <?php
+
+global $tablename, $link;
+connectSQL('job_search', 'user');
+
 $passlist = array('hogehoge' => 'hogepass', 'hoge2' => 'hoge2pass');
 
 
@@ -42,27 +46,7 @@ function echoHelloPage($who)
 {
     include 'head.php';
 
-    // connectSQL('job_search', 'user');
-
-    // Database connection and query
-    // $hostname = '127.0.0.1';
-    // $username = 'root';
-    // $password = 'dbpass';
-    // $dbname = 'job_search';
-    global $tablename;
-    global $link;
-
-    connectSQL('job_search', 'user');
-
-    // if (!$link) {
-    //     exit("Connect error!");
-    // }
-
-    // $result = mysqli_select_db($link, $dbname);
-
-    // if (!$result) {
-    //     exit("Use error on table ($dbname)!");
-    // }
+    connectSQL('task9', 'bbs');
 
     $selectQuery = "SELECT * FROM `$tablename`";
     $result = mysqli_query($link, $selectQuery);
@@ -98,6 +82,7 @@ function connectSQL($database_name, $table_name)
     $username = 'root';
     $password = 'dbpass';
     $dbname = $database_name;
+    global $tablename, $link;
     $tablename = $table_name;
 
     $link = mysqli_connect($hostname, $username, $password);
