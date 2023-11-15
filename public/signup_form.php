@@ -42,5 +42,6 @@
             <input type="submit" value="新規登録">
         </p>
     </form>
+    <a href="login_form.php">ログインする</a>
 </body>
 </html>

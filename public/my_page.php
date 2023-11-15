@@ -13,7 +13,7 @@
         return;
     }
 
-    $result = $_SESSION['login_user'];
+    $login_user = $_SESSION['login_user'];
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +27,8 @@
         <h2>マイページ</h2>
         <p>ログインユーザ:<?php echo h($login_user['name']) ?></p>
         <p>メールアドレス:<?php echo h($login_user['email']) ?></p>
-        <a href="./signup_form.php">戻る</a>
+        <form action="logout.php" method="POST">
+            <input type="submit" name="logout" value="ログアウト">
+        </form>
     </body>
 </html>
