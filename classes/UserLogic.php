@@ -43,14 +43,24 @@
             //ユーザをemailから検索して取得
             $user = self::getUserByEmail($email);
 
+            if(!$user)
+            {
+                $_SESSION['msg'] = 'emailが一致しません';
+                return $result;
+            }
+
             // パスワードの照会
             if(password_verify($password, $user['password']))
             {
                 //ログイン成功時
+                session_regenerate_id(true);
                 $_SESSION['login_user'] = $user;
                 $result = true;
                 return result;
-            };
+            }
+
+            $_SESSION['msg'] = 'パスワードが一致しません';
+            return $result;
         }
     }
 

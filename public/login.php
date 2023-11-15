@@ -17,6 +17,9 @@
 </head>
 <body>
     <h2>ログインフォーム</h2>
+        <?php if (isset($err['msg'])) : ?>
+            <p><?php echo $err['msg']; ?></p>
+        <?php endif; ?>
     <form action="top.php" method="POST">
         <p>
             <label for="email">メールアドレス：</label>

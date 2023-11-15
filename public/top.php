@@ -27,6 +27,14 @@
     // ログイン成功時の処理
     $result = UserLogic::login($email, $password);
 
+    //ログイン失敗時の処理
+    if(!$result)
+    {
+        header('Location: login.php');
+        return;
+    }
+    echo 'ログイン成功です';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
