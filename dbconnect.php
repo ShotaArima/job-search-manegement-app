@@ -2,7 +2,7 @@
     require_once 'env.php';
     ini_set('display_errors',true);
 
-    function connect($database_name, $table_name)
+    function connect()
     {
         $host= DB_HOST;
         $user= DB_USER;
@@ -24,5 +24,4 @@
         }
 
     }
-    echo connent();
 ?>

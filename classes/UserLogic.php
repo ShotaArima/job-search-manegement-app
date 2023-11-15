@@ -11,13 +11,13 @@ class UserLogic
     public static function createUser($userData)
     {
         $result=false;
-        $sql='INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
+        $sql='INSERT INTO user (user_name, user_pass, user_email) VALUES (?, ?, ?)';
 
         // ユーザデータを配列に入れる
         $arr=[];
-        $arr[] = $userData['username']; //name
+        $arr[] = str_repeat('あ', '64'); //name
         $arr[] = $userData['email'];//email
-        $arr[] = password_hash($userData['pasword'], PASSWORD_DEFAULT);//password、ハッシュ化する
+        $arr[] = password_hash($userData['password'], PASSWORD_DEFAULT);//password、ハッシュ化する
 
         try
         {
@@ -27,6 +27,8 @@ class UserLogic
         }
         catch(\Exception $e)
         {
+            echo $e;
+            error_log($e, 3, '../error.log');
             return $result;
         }
     }
@@ -68,7 +70,7 @@ class UserLogic
      * @param string $email
      * @return bool $result
      */
-    public static function login($email)
+    public static function getUserByEmail($email)
     {
         //SQLの準備
         //SQlの実行

@@ -25,7 +25,7 @@
     }
     $password = filter_input(INPUT_POST, 'password');
     // 正規表現(この状態でもまだ弱いので改良する必要あり)
-    if(preg_match("/\A[a-z\d]{8,100}*\z/i",$password))
+    if (!preg_match("/\A[a-z\d]{8,100}+\z/i",$password))
     {
         $err[] = 'パスワードは英数字8文字以上100文字以下にしてください';
     }
