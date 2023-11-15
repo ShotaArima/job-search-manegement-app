@@ -11,7 +11,7 @@ class UserLogic
     public static function createUser($userData)
     {
         $result=false;
-        $sql='INSERT INTO user (user_name, user_pass, user_email) VALUES (?, ?, ?)';
+        $sql='INSERT INTO user (user_name, user_email, user_pass) VALUES (?, ?, ?)';
 
         // ユーザデータを配列に入れる
         $arr=[];

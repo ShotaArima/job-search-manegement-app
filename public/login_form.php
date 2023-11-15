@@ -45,7 +45,7 @@
             <?php endif; ?>
         </p>
         <p>
-            <input type="submit" value="新規登録">
+            <input type="submit" value="ログイン">
         </p>
     </forom>
     <a href ="signup_form.php">新規登録はこちら</a>
