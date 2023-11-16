@@ -1,3 +1,13 @@
+<?php
+    if(isset($_POST['signin']))
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        echo $username;<br>
+        echo $password;<br>
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
