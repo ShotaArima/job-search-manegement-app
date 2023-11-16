@@ -1,10 +1,24 @@
 <?php
+    require_once 'dbconnect.php';
+
     if(isset($_POST['signin']))
     {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        echo $username;<br>
-        echo $password;<br>
+
+        try
+        {
+            $sql = 'INSERT INTO user (user_name, user_pass) VALUES (?, ?)';
+            $stmt = $db->prepare($sql);
+            $stmt->execute(array($username, $password));
+            $stmt = null;
+            $db = null;
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+            exit;
+        }
     }
 ?>
 
