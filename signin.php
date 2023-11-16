@@ -16,6 +16,9 @@
                 $stmt->execute(array($username, $password));
                 $stmt = null;
                 $db = null;
+
+                header('Location: index.php');
+                exit;
             }
 
         }
