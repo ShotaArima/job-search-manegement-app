@@ -58,7 +58,7 @@ class UserLogic
             session_regenerate_id(true);
             $_SESSION['login_user'] = $user;
             $result = true;
-            return result;
+            return $result;
         }
 
         $_SESSION['msg'] = 'パスワードが一致しません';
@@ -75,7 +75,7 @@ class UserLogic
         //SQLの準備
         //SQlの実行
         //SQLの結果を返す
-        $sql='SELECT * FROM  users WHERE email==?';
+        $sql='SELECT * FROM  users WHERE email = ?';
 
         // emailを配列に入れる
         $arr=[];
