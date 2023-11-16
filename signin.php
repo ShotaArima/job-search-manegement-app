@@ -8,11 +8,16 @@
 
         try
         {
+            $db = connect();
             $sql = 'INSERT INTO user (user_name, user_pass) VALUES (?, ?)';
-            $stmt = $db->prepare($sql);
-            $stmt->execute(array($username, $password));
-            $stmt = null;
-            $db = null;
+            if($db)
+            {
+                $stmt = $db->prepare($sql);
+                $stmt->execute(array($username, $password));
+                $stmt = null;
+                $db = null;
+            }
+
         }
         catch(PDOException $e)
         {
@@ -35,5 +40,6 @@
             パスワード<input type="password" name="password" value=""><br>
             <input type="submit" name="signin" value="新規登録">
         </form>
+        <a href="index.php">戻る</a>
     </body>
 </html>
