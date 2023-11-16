@@ -1,6 +1,6 @@
 # job-search-manegement-app
 This repository is my job search manegement application
-Site : http://127.0.0.1:10800/~sspuser/page_entrance.php
+Site : http://127.0.0.1:10800/~sspuser/index.php
 
 候補
 - 就活管理システム
