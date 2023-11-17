@@ -59,5 +59,5 @@
             パスワード<input type="password" name="password" value=""><br>
             <input type="submit" name="login" value="ログイン">
         </form>
-        <a href="signin.php">新規登録はこちら</a>
+        <a href="signin.php" name="trans_add">新規登録はこちら</a>
 </html>

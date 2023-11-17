@@ -43,6 +43,6 @@
             パスワード<input type="password" name="password" value=""><br>
             <input type="submit" name="signin" value="新規登録">
         </form>
-        <a href="index.php">戻る</a>
+        <a href="index.php" name="trans_index">戻る</a>
     </body>
 </html>

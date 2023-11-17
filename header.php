@@ -69,8 +69,8 @@
                 <a style="text-decoration: none; color: #bbbbbb; align-self: flex-end;">就活管理アプリ</a>
             </div>
 
-            <form method="post" action="page_entrance.php">
-                <button type="submit" class="btn btn-primarybtn btn-outline-light" name="btn-logout" value="btn-logout">ログアウト</button>
+            <form method="post" action="index.php">
+                <button type="submit" class="btn btn-primarybtn btn-outline-light" name="logout" value="btn-logout">ログアウト</button>
                 <input type="hidden" name="transition" value="trans_main"></input>
             </form>
         </div>
