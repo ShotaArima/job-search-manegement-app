@@ -1,5 +1,6 @@
 <?php
-        $id = $_POST['user_id'];
+    session_start();
+    $id = $_SESSION['user_id'];
 
     include 'header.php';
     require_once 'dbconnect.php';
@@ -12,29 +13,20 @@
         {
             $stmt = $db->prepare($sql);
             $stmt->execute(array($id));
-            $result = $stmt->fetchAll();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $stmt = null;
             $db = null;
 
             if($result !== false && $result !== null)
             {
-                // // ログイン成功時、user_idをhiddenフィールドに追加
-                // $user_id = $result['user_id'];
-                // echo '<form id="loginForm" action="page_main.php" method="POST">';
-                // echo '<input type="hidden" name="user_id" value="' . $user_id . '">';
-                // echo '</form>';
-                // echo '<script>document.getElementById("loginForm").submit();</script>';
-                // exit;
-
                 // ユーザidに紐づけられた会社情報を表示
-                // echo '<div style="display: flex;>';
                 echo '<h1>会社情報</h1>';
                 // 企業の追加
                 echo '<form action="page_company_add.php" method="POST">';
                 echo '<button type="submit" class="" name="trans_company_add">企業追加</button>';
-                echo '<input type="hidden" name="user_id" value="'. $id .'">';
+                echo '<input type="hidden" name="user_id" value="'. htmlspecialchars($id, ENT_QUOTES, 'UTF-8') .'">';
                 echo '</form>';
-                // echo '</div>';
+
                 // テーブル表示
                 echo '<table border="1">';
                 echo '<tr>';
@@ -44,9 +36,9 @@
                 foreach($result as $value)
                 {
                     echo '<tr>';
-                    echo '<td>' . $key . '</td>';
-                    echo '<td>' . $result['company_name'] . '</td>';
-                    switch($result['company_status'])
+                    echo '<td>' . htmlspecialchars($value['company_id'], ENT_QUOTES, 'UTF-8') . '</td>';
+                    echo '<td>' . htmlspecialchars($value['company_name'], ENT_QUOTES, 'UTF-8') . '</td>';
+                    switch($value['company_status'])
                     {
                         case 0:
                             echo '<td>落選</td>';
@@ -65,7 +57,7 @@
                             break;
                     }
 
-                    echo '<td>' . $result['company_status'] . '</td>';
+                    echo '<td>' . htmlspecialchars($value['company_status'], ENT_QUOTES, 'UTF-8') . '</td>';
                     echo '</tr>';
                 }
                 echo '</table>';
@@ -78,11 +70,11 @@
     }
     catch(PDOException $e)
     {
-        echo $e->getMessage();
+        echo 'エラー: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8');
         exit;
     }
 
 
-    echo $id . 'さん、こんにちは！';
+    echo 'No.' . htmlspecialchars($id, ENT_QUOTES, 'UTF-8') . 'さん、こんにちは！';
     include 'footer.php';
 ?>
