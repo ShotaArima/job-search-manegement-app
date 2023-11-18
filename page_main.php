@@ -35,12 +35,15 @@
                 echo '<th>No.</th>';
                 echo '<th>会社名</th>';
                 echo '<th>状態</th>';
+                echo '<th>リンク</th>';
                 echo '</tr>';
                 foreach($result as $value)
                 {
                     echo '<tr>';
                     echo '<td>' . htmlspecialchars($value['company_id'], ENT_QUOTES, 'UTF-8') . '</td>';
                     echo '<td>' . htmlspecialchars($value['company_name'], ENT_QUOTES, 'UTF-8') . '</td>';
+
+                    // 就活の状態を表示
                     switch($value['company_status'])
                     {
                         case 0:
@@ -60,7 +63,13 @@
                             break;
                     }
 
-                    echo '<td>' . htmlspecialchars($value['company_status'], ENT_QUOTES, 'UTF-8') . '</td>';
+                    // 各企業のぺージリンク
+                    $company_id = htmlspecialchars($value['company_status'], ENT_QUOTES, 'UTF-8');
+                    echo '<td>';
+                    echo '<a href="company.php" name="trans_company" value="">編集</a>';
+                    echo '</form>';
+                    echo "</td>";
+
                     echo '</tr>';
                 }
                 echo '</table>';
