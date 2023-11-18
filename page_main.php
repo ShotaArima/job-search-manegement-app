@@ -5,6 +5,8 @@
     include 'header.php';
     require_once 'dbconnect.php';
 
+    echo 'No.' . htmlspecialchars($id, ENT_QUOTES, 'UTF-8') . 'さん、こんにちは！';
+
     try
     {
         $db = connect();
@@ -30,6 +32,7 @@
                 // テーブル表示
                 echo '<table border="1">';
                 echo '<tr>';
+                echo '<th>No.</th>';
                 echo '<th>会社名</th>';
                 echo '<th>状態</th>';
                 echo '</tr>';
@@ -74,7 +77,5 @@
         exit;
     }
 
-
-    echo 'No.' . htmlspecialchars($id, ENT_QUOTES, 'UTF-8') . 'さん、こんにちは！';
     include 'footer.php';
 ?>
