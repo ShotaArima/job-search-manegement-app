@@ -38,6 +38,25 @@
                     echo '<tr>';
                     echo '<td>' . $key . '</td>';
                     echo '<td>' . $result['company_name'] . '</td>';
+                    switch($result['company_status'])
+                    {
+                        case 0:
+                            echo '<td>落選</td>'
+                            break;
+                        case 1:
+                            echo '<td>エントリー前</td>';
+                            break;
+                        case 2:
+                            echo '<td>ES提出前</td>'
+                            break;
+                        case 3:
+                            echo '<td>面談前<td>'
+                            break;
+                        case 4:
+                            echo '<td>内定</td>'
+                            break;
+                    }
+
                     echo '<td>' . $result['company_status'] . '</td>';
                     echo '</tr>';
                 }
