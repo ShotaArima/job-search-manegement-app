@@ -1,4 +1,8 @@
 <?php
+    // sesisonスタート
+    session_start();
+
+    // データベース接続
     require_once 'dbconnect.php';
 
     $err_msg = '';
@@ -11,24 +15,33 @@
         try
         {
             $db = connect();
-            $sql = 'select * from user where user_name=? and user_pass=?';
+            $sql = 'SELECT user_id, user_pass FROM user WHERE user_name = :username';
+
             if($db)
             {
                 $stmt = $db->prepare($sql);
-                $stmt->execute(array($username, $password));
+
+                // パラメータをバインド
+                $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+
+                $stmt->execute();
                 $result = $stmt->fetch();
                 $stmt = null;
                 $db = null;
 
                 if($result !== false && $result !== null)
                 {
-                    // ログイン成功時、user_idをhiddenフィールドに追加
-                    $user_id = $result['user_id'];
-                    echo '<form id="loginForm" action="page_main.php" method="POST">';
-                    echo '<input type="hidden" name="user_id" value="' . $user_id . '">';
-                    echo '</form>';
-                    echo '<script>document.getElementById("loginForm").submit();</script>';
-                    exit;
+                    if (password_verify($password, $result['user_pass']))
+                    {
+                        // ログイン成功時、user_idをセッションに保存
+                        $_SESSION['user_id'] = $result['user_id'];
+                        header('Location: page_main.php');
+                        exit;
+                    }
+                    else
+                    {
+                        $err_msg = 'ユーザ名又はパスワードが間違っています。';
+                    }
                 }
                 else
                 {
@@ -59,5 +72,5 @@
             パスワード<input type="password" name="password" value=""><br>
             <input type="submit" name="login" value="ログイン">
         </form>
-        <a href="signin.php">新規登録はこちら</a>
+        <a href="signin.php" name="trans_add">新規登録はこちら</a>
 </html>
