@@ -68,8 +68,8 @@
         <h1>ログインフォーム</h1>
         <form action="" method="POST">
             <?php if($err_msg !== null && $err_msg !== '')  echo $err_msg.'<br>'; ?>
-            ユーザ名<input type="text" name="username" value="半角英数字"><br>
-            パスワード<input type="password" name="password" value="半角英数字"><br>
+            ユーザ名<input type="text" name="username" value=""><br>
+            パスワード<input type="password" name="password" value=""><br>
             <input type="submit" name="login" value="ログイン">
         </form>
         <a href="signin.php" name="trans_add">新規登録はこちら</a>
