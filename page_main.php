@@ -27,7 +27,15 @@
                 // exit;
 
                 // ユーザidに紐づけられた会社情報を表示
+                // echo '<div style="display: flex;>';
                 echo '<h1>会社情報</h1>';
+                // 企業の追加
+                echo '<form action="page_company_add.php" method="POST">';
+                echo '<button type="submit" class="" name="trans_company_add">企業追加</button>';
+                echo '<input type="hidden" name="user_id" value="'. $id .'">';
+                echo '</form>';
+                // echo '</div>';
+                // テーブル表示
                 echo '<table border="1">';
                 echo '<tr>';
                 echo '<th>会社名</th>';
@@ -41,19 +49,19 @@
                     switch($result['company_status'])
                     {
                         case 0:
-                            echo '<td>落選</td>'
+                            echo '<td>落選</td>';
                             break;
                         case 1:
                             echo '<td>エントリー前</td>';
                             break;
                         case 2:
-                            echo '<td>ES提出前</td>'
+                            echo '<td>ES提出前</td>';
                             break;
                         case 3:
-                            echo '<td>面談前<td>'
+                            echo '<td>面談前<td>';
                             break;
                         case 4:
-                            echo '<td>内定</td>'
+                            echo '<td>内定</td>';
                             break;
                     }
 
