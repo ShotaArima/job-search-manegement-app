@@ -43,8 +43,8 @@
                     // 掲示板システムのような表示方法
                     echo '<hr>';
                     echo '<div class="post">';
-                        echo ' "<p>"' . htmlspecialchars($value['id']) . '"</p>";';// 不必要な場合、削除
-                        echo '<h5>: "' . htmlspecialchars($value['detail_subject']) . '"</h5>';// タイトル、見出し
+                        // echo ' "<p>"' . htmlspecialchars($value['id']) . '"</p>";';// 不必要な場合、削除
+                        echo '<h5>' . htmlspecialchars($value['detail_subject']) . '</h5>';// タイトル、見出し
                         echo '<p class="post-text">' . htmlspecialchars($value['detail_content']) . '</p>';// 中身の表示
                         echo '<div class="container">';
                             echo "<p class='post-time'>イベント日時: " . htmlspecialchars($value['detail_when']) . "</p>";
