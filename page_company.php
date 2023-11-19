@@ -67,7 +67,7 @@
                             echo '</p>';
                         echo "</div>";
                         // 編集ボタン
-                        echo '<a href="company.php" name="trans_company" value="">編集</a>';
+                        echo '<a href="page_update_company.php" name="trans_company" value="">編集</a>';
                     echo "</div>";
                     echo "<hr>";
                 }
