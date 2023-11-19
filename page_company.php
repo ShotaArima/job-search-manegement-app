@@ -35,17 +35,17 @@
                 // イベントの追加
                 echo '<form action="page_update_company.php" method="POST">';
                 echo '<button type="submit" class="" name="trans_update_company">イベント追加</button>';
-                echo '<input type="huser_idden" name="user_user_id" value="'. htmlspecialchars($company_id, ENT_QUOTES, 'UTF-8') .'">';
+                echo '<input type="hidden" name="user_user_id" value="'. htmlspecialchars($company_id, ENT_QUOTES, 'UTF-8') .'">';
                 echo '</form>';
 
                 foreach($result as $value)
                 {
-                // 掲示板システムのような表示方法
-                echo '<hr>';
-                echo '<div class="post">';
-                    echo 'echo "<p>"' . htmlspecialchars($value['id']) . '"</p>";';// 不必要な場合、削除
-                    echo '<h5>: "' . htmlspecialchars($value['detail_subject']) . '"</h5>';// タイトル、見出し
-                    echo '<p class="post-text">' . htmlspecialchars($value['detail_content']) . '</p>';// 中身の表示
+                    // 掲示板システムのような表示方法
+                    echo '<hr>';
+                    echo '<div class="post">';
+                        echo ' "<p>"' . htmlspecialchars($value['id']) . '"</p>";';// 不必要な場合、削除
+                        echo '<h5>: "' . htmlspecialchars($value['detail_subject']) . '"</h5>';// タイトル、見出し
+                        echo '<p class="post-text">' . htmlspecialchars($value['detail_content']) . '</p>';// 中身の表示
                         echo '<div class="container">';
                             echo "<p class='post-time'>イベント日時: " . htmlspecialchars($value['detail_when']) . "</p>";
                             echo '<p class="importance">';
@@ -62,6 +62,7 @@
                                     break;
                                 case 3:
                                     echo '面接日';
+                                    break;
                             }
                             echo '</p>';
                         echo "</div>";
