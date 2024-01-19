@@ -1,5 +1,5 @@
 # job-search-manegement-app
-This repository is my job search manegement application
+This repository is my job search manegement application  
 Site(local) : http://127.0.0.1:10800/~sspuser/index.php
 
 候補
